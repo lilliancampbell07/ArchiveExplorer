@@ -40,9 +40,9 @@ const Contact = () => {
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="space-y-4 text-center">
-            <h1 className="text-4xl font-bold text-foreground">Contact an Archivist</h1>
+            <h1 className="text-4xl font-bold text-foreground">McLean County Historical Society</h1>
             <p className="text-lg text-muted-foreground">
-              Need help with your research? Our archivists are here to assist you
+              Need help with your research? Connect with our archivists and explore the Pages of the Past
             </p>
           </div>
 
@@ -53,7 +53,9 @@ const Contact = () => {
                 <CardTitle className="text-lg">Email</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
-                <p className="text-sm text-muted-foreground">archives@community.org</p>
+                <a href="mailto:mchistory@mchistory.org" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  mchistory@mchistory.org
+                </a>
               </CardContent>
             </Card>
 
@@ -63,7 +65,9 @@ const Contact = () => {
                 <CardTitle className="text-lg">Phone</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
-                <p className="text-sm text-muted-foreground">(555) 123-4567</p>
+                <a href="tel:+13098277424" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  (309) 827-0428
+                </a>
               </CardContent>
             </Card>
 
@@ -73,7 +77,14 @@ const Contact = () => {
                 <CardTitle className="text-lg">Visit Us</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
-                <p className="text-sm text-muted-foreground">123 History Lane</p>
+                <a 
+                  href="https://mchistory.org" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  200 N Main St<br />Bloomington, IL 61701
+                </a>
               </CardContent>
             </Card>
           </div>

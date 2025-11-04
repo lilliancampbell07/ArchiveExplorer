@@ -41,15 +41,15 @@ const Index = () => {
             <div className="max-w-3xl mx-auto text-center space-y-8">
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground">
-                  Explore Local History
+                  Bloomington-Normal History
                 </h1>
                 <p className="text-xl md:text-2xl text-primary-foreground/90">
-                  Making historical archives accessible to students and community members through modern search technology
+                  Discover McLean County's past through the Pages of the Past archives - from the founding of Illinois State University to the growth of State Farm Insurance
                 </p>
               </div>
               
               <div className="bg-card p-4 rounded-lg shadow-lg">
-                <SearchBar onSearch={handleSearch} placeholder="Try: 'What happened in 1985?'" size="large" />
+                <SearchBar onSearch={handleSearch} placeholder="Try: 'History of Illinois State University' or 'Beer Nuts factory'" size="large" />
               </div>
 
               <div className="flex flex-wrap gap-4 justify-center">
@@ -71,7 +71,7 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">
-                Discover the Past with Modern Tools
+                Explore Bloomington-Normal's Rich Heritage
               </h2>
               
               <div className="grid md:grid-cols-3 gap-6">
@@ -104,7 +104,7 @@ const Index = () => {
                 Need Help with Your Research?
               </h2>
               <p className="text-lg text-muted-foreground">
-                Our team of professional archivists is ready to assist you with your historical research needs
+                The McLean County Historical Society archivists are ready to help you explore Bloomington-Normal's history
               </p>
               <Button size="lg" onClick={() => navigate("/contact")}>
                 <Mail className="mr-2 h-5 w-5" />
