@@ -24,18 +24,16 @@ const Navigation = () => {
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
-            
+
             return (
               <Button
                 key={item.path}
                 variant={isActive ? "default" : "ghost"}
-                asChild
                 className="gap-2"
+                onClick={() => window.open('https://mchistory.org/research/articles', '_blank')}
               >
-                <Link to={item.path}>
-                  <Icon className="h-4 w-4" />
-                  <span className="hidden sm:inline">{item.label}</span>
-                </Link>
+                <Icon className="h-4 w-4" />
+                <span className="hidden sm:inline">{item.label}</span>
               </Button>
             );
           })}
