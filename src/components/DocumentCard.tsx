@@ -7,9 +7,10 @@ interface DocumentCardProps {
   date: string;
   summary: string;
   type: string;
+  url?: string;
 }
 
-const DocumentCard = ({ title, date, summary, type }: DocumentCardProps) => {
+const DocumentCard = ({ title, date, summary, type, url }: DocumentCardProps) => {
   return (
     <Card className="transition-all hover:shadow-md">
       <CardHeader>
@@ -25,7 +26,11 @@ const DocumentCard = ({ title, date, summary, type }: DocumentCardProps) => {
       </CardHeader>
       <CardContent>
         <p className="text-muted-foreground mb-4">{summary}</p>
-        <Button variant="secondary" className="gap-2">
+        <Button 
+          variant="secondary" 
+          className="gap-2"
+          onClick={() => url && window.open(url, '_blank')}
+        >
           View Document
           <ExternalLink className="h-4 w-4" />
         </Button>

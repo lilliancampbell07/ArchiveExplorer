@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Illinois State Normal University Founding Charter",
+    "url": "https://mchistory.org/research/articles/isnu-founding-charter",
+    "date": "February 18, 1857",
+    "type": "Official Records",
+    "description": "Legislative act establishing Illinois' first public university in Normal. Documents the vision to train teachers for Illinois schools and the selection of Jesse Fell's donated land for the campus.",
+    "tags": ["education", "illinois state university", "isnu", "normal", "jesse fell", "university", "teaching", "1857"],
+    "keywords": "Illinois State Normal University founding charter education teachers Jesse Fell campus legislation"
+  },
+  {
+    "id": 2,
+    "title": "The Pantagraph - State Farm Insurance Company Moves to Bloomington",
+    "url": "https://mchistory.org/research/articles/state-farm-bloomington",
+    "date": "June 7, 1929",
+    "type": "Newspaper Article",
+    "description": "Coverage of State Farm's relocation from Bloomington to a larger headquarters, marking the beginning of what would become the city's largest employer and a Fortune 500 company.",
+    "tags": ["business", "state farm", "insurance", "bloomington", "economy", "employment", "1929"],
+    "keywords": "State Farm Insurance Bloomington headquarters employer Fortune 500 company business"
+  },
+  {
+    "id": 3,
+    "title": "Beer Nuts Factory Opening Ceremony",
+    "url": "https://mchistory.org/research/articles/beer-nuts-factory",
+    "date": "April 19, 1937",
+    "type": "Business Records",
+    "description": "Documentation of the Shirk family's candy-coated peanut factory opening. The product originally called 'Redskins' would become an iconic Bloomington-Normal brand sold nationwide.",
+    "tags": ["business", "beer nuts", "shirk family", "factory", "manufacturing", "bloomington", "1937"],
+    "keywords": "Beer Nuts factory Shirk family candy peanuts manufacturing Bloomington business"
+  },
+  {
+    "id": 4,
+    "title": "David Davis Mansion Dedication",
+    "url": "https://mchistory.org/research/articles/david-davis-mansion",
+    "date": "October 15, 1872",
+    "type": "Historical Site",
+    "description": "Records from the completion of Supreme Court Justice David Davis's Victorian mansion, friend and campaign manager of Abraham Lincoln. Now a National Historic Landmark.",
+    "tags": ["architecture", "david davis", "mansion", "abraham lincoln", "historic landmark", "victorian", "1872"],
+    "keywords": "David Davis mansion Victorian Supreme Court Abraham Lincoln historic landmark architecture"
+  }
+]

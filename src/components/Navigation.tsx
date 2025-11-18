@@ -25,15 +25,33 @@ const Navigation = () => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
             
+            // Contact button opens external link
+            if (item.path === "/contact") {
+              return (
+                <Button
+                  key={item.path}
+                  variant="ghost"
+                  className="gap-2"
+                  onClick={() => window.open('https://mchistory.org/contact', '_blank')}
+                >
+                  <Icon className="h-4 w-4" />
+                  <span className="hidden sm:inline">{item.label}</span>
+                </Button>
+              );
+            }
+            
+            // All other buttons use internal routing
             return (
               <Button
                 key={item.path}
                 variant={isActive ? "default" : "ghost"}
+                asChild
                 className="gap-2"
-                onClick={() => window.open('https://mchistory.org/research/articles', '_blank')}
               >
-                <Icon className="h-4 w-4" />
-                <span className="hidden sm:inline">{item.label}</span>
+                <Link to={item.path}>
+                  <Icon className="h-4 w-4" />
+                  <span className="hidden sm:inline">{item.label}</span>
+                </Link>
               </Button>
             );
           })}

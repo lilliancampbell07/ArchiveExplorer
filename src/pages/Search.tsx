@@ -4,41 +4,33 @@ import SearchBar from "@/components/SearchBar";
 import DocumentCard from "@/components/DocumentCard";
 import ExternalLink from "@/components/ExternalLink";
 import { useToast } from "@/hooks/use-toast";
+import { searchArticles, formatSearchResults } from "@/lib/searchUtils";
+import articlesData from "@/data/articles.json";
 
 const Search = () => {
   const { toast } = useToast();
-  const [searchResults] = useState([
-    {
-      title: "Illinois State Normal University Founding Charter",
-      date: "February 18, 1857",
-      type: "Official Records",
-      summary: "Legislative act establishing Illinois' first public university in Normal. Documents the vision to train teachers for Illinois schools and the selection of Jesse Fell's donated land for the campus."
-    },
-    {
-      title: "The Pantagraph - State Farm Insurance Company Moves to Bloomington",
-      date: "June 7, 1929",
-      type: "Newspaper Article",
-      summary: "Coverage of State Farm's relocation from Bloomington to a larger headquarters, marking the beginning of what would become the city's largest employer and a Fortune 500 company."
-    },
-    {
-      title: "Beer Nuts Factory Opening Ceremony",
-      date: "April 19, 1937",
-      type: "Business Records",
-      summary: "Documentation of the Shirk family's candy-coated peanut factory opening. The product originally called 'Redskins' would become an iconic Bloomington-Normal brand sold nationwide."
-    },
-    {
-      title: "David Davis Mansion Dedication",
-      date: "October 15, 1872",
-      type: "Historical Site",
-      summary: "Records from the completion of Supreme Court Justice David Davis's Victorian mansion, friend and campaign manager of Abraham Lincoln. Now a National Historic Landmark."
-    },
-  ]);
+  const [searchResults, setSearchResults] = useState(
+    formatSearchResults(articlesData.map(article => ({ ...article, relevanceScore: 0 })))
+  );
+  const [isSearching, setIsSearching] = useState(false);
 
   const handleSearch = (query: string) => {
+    setIsSearching(true);
+    
+    // Perform search
+    const results = searchArticles(query, articlesData);
+    const formattedResults = formatSearchResults(results);
+    
+    setSearchResults(formattedResults);
+    
     toast({
-      title: "Search submitted",
-      description: `Searching for: "${query}"`,
+      title: query ? "Search completed" : "Showing all articles",
+      description: query 
+        ? `Found ${formattedResults.length} article${formattedResults.length !== 1 ? 's' : ''} matching "${query}"`
+        : `Displaying all ${formattedResults.length} articles`,
     });
+    
+    setIsSearching(false);
   };
 
   return (
