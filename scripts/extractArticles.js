@@ -19,9 +19,10 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const CRAWLER_OUTPUT = 'crawler_only_urls_new.json';
+const CRAWLER_OUTPUT = path.join(__dirname, 'crawler_with_found_links_new_.json');
 const OUTPUT_FILE = path.join(__dirname, '../src/data/articles.json');
 const DELAY_BETWEEN_REQUESTS = 2000; // 2 seconds - be respectful!
+const MAX_ARTICLES = 10; // Limit to first 50 articles (adjust as needed)
 
 /**
  * Extract article data from a page
@@ -135,8 +136,28 @@ async function extractAllArticles() {
   }
   
   // Read URLs from crawler
-  const urls = JSON.parse(fs.readFileSync(CRAWLER_OUTPUT, 'utf-8'));
-  console.log(`📋 Found ${urls.length} URLs to process`);
+  const crawlerData = JSON.parse(fs.readFileSync(CRAWLER_OUTPUT, 'utf-8'));
+  
+  // Extract all unique article URLs (filter out topics, main page, etc)
+  const allUrls = new Set();
+  
+  for (const [key, urls] of Object.entries(crawlerData)) {
+    urls.forEach(url => {
+      // Only include actual article pages (not topics, not main page)
+      if (url.includes('/research/articles/') && 
+          !url.includes('/topics') &&
+          !url.endsWith('/articles') &&
+          !url.includes('#')) {
+        allUrls.add(url);
+      }
+    });
+  }
+  
+  const urlsToProcess = Array.from(allUrls).slice(0, MAX_ARTICLES);
+  
+  console.log(`📋 Found ${allUrls.size} total article URLs`);
+  console.log(`📝 Processing first ${urlsToProcess.length} articles`);
+  console.log(`⏱️  Estimated time: ~${Math.round(urlsToProcess.length * DELAY_BETWEEN_REQUESTS / 1000 / 60)} minutes\n`);
   
   // Launch browser
   console.log('🚀 Launching browser...');
@@ -155,15 +176,15 @@ async function extractAllArticles() {
   let errorCount = 0;
   
   // Process each URL
-  for (let i = 0; i < urls.length; i++) {
-    const url = urls[i];
+  for (let i = 0; i < urlsToProcess.length; i++) {
+    let url = urlsToProcess[i];
     
     // Skip if not a full URL
     if (!url.startsWith('http')) {
       url = `https://mchistory.org${url}`;
     }
     
-    console.log(`\n[${i + 1}/${urls.length}] Processing: ${url}`);
+    console.log(`\n[${i + 1}/${urlsToProcess.length}] Processing: ${url}`);
     
     const article = await extractArticleData(page, url, i + 1);
     
@@ -176,7 +197,7 @@ async function extractAllArticles() {
     }
     
     // Be respectful - wait between requests
-    if (i < urls.length - 1) {
+    if (i < urlsToProcess.length - 1) {
       await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_REQUESTS));
     }
   }
