@@ -1,42 +1,192 @@
 [
-{
+  {
     "id": 1,
     "title": "BroMenn donation speaks to 125 years of community service",
     "url": "https://mchistory.org/research/articles/bromenn-donation-speaks-to-125-years-of-community-service",
-    "date": "July 4, 2021",
-    "type": "News Article",
-    "description": "Coverage of a donation to BroMenn Medical Center that highlights 125 years of community health care and philanthropic service in the Bloomington-Normal area.",
-    "tags": ["healthcare", "bromenn", "donation", "philanthropy", "community service", "125 years", "hospital", "bloomington-normal", "2021"],
-    "keywords": "BroMenn donation 125 years community health BroMenn Medical Center Bloomington-Normal philanthropy hospital"
+    "date": "Unknown",
+    "type": "Article",
+    "description": "Carle BroMenn Medical Center has undergone one transformation after another since its modest beginnings 125 years ago. It opened on May 8, 1896, as the 22-bed Deaconess Hospital—this nearly a quarter ...",
+    "tags": [
+      "bromenn",
+      "donation",
+      "speaks",
+      "years",
+      "community",
+      "service",
+      "carle",
+      "medical"
+    ],
+    "keywords": "bromenn donation speaks years community service carle medical"
   },
-{
+  {
     "id": 2,
-    "title": "Electric Cars Sparked Local Interest Long Before Rivian",
+    "title": "Electric cars sparked local interest long before Rivian",
     "url": "https://mchistory.org/research/articles/electric-cars-sparked-local-interest-long-before-rivian",
-    "date": "July 12, 2023",
-    "type": "Research Article",
-    "description": "Documents the history of electric vehicles in the Bloomington‑Normal region, highlighting early adopters, local experiments, and infrastructure developments that presaged modern EV interest well before Rivian's arrival.",
-    "tags": ["electric vehicles", "EV", "automotive history", "rivian", "transportation", "local history", "bloomington-normal"],
-    "keywords": "electric cars history Bloomington-Normal early electric vehicles charging infrastructure local experiments Rivian"
-},
-{
+    "date": "Unknown",
+    "type": "Article",
+    "description": "The startling success of electric automaker Rivian has shined an international spotlight on Bloomington-Normal. The company’s ever-sprawling plant on Normal’s west side also heralds the coming transpo...",
+    "tags": [
+      "electric",
+      "cars",
+      "sparked",
+      "local",
+      "interest",
+      "long",
+      "before",
+      "rivian"
+    ],
+    "keywords": "electric cars sparked local interest long before rivian"
+  },
+  {
     "id": 3,
-    "title": "Digitized Photos Recall Thanksgiving Corn Bowl",
+    "title": "Digitized photos recall Thanksgiving Corn Bowl",
     "url": "https://mchistory.org/research/articles/digitized-photos-recall-thanksgiving-corn-bowl",
-    "date": "November 2019",
-    "type": "Research Article",
-    "description": "Collection of digitized photographs and community recollections documenting the Thanksgiving Corn Bowl, highlighting its role in local sports culture and seasonal traditions.",
-    "tags": ["photographs", "archive", "Corn Bowl", "Thanksgiving", "sports", "local history", "digitization", "bloomington-normal"],
-    "keywords": "digitized photos Thanksgiving Corn Bowl archive photographs local sports history Bloomington-Normal"
-},
-{
+    "date": "Unknown",
+    "type": "Article",
+    "description": "The not-for-profit McLean County Museum of History recently celebrated a remarkable milestone: The posting of the 100,000th digitized Pantagraph negative on the Illinois Digital Archives website. Back...",
+    "tags": [
+      "digitized",
+      "photos",
+      "recall",
+      "thanksgiving",
+      "corn",
+      "bowl",
+      "not-for-profit",
+      "mclean"
+    ],
+    "keywords": "digitized photos recall thanksgiving corn bowl not-for-profit mclean"
+  },
+  {
     "id": 4,
-    "title": "Donation Illuminates Earhart's 1936 Visit to Twin Cities",
-    "url": "https://mchistory.org/research/articles/donation-illuminates-earharts-1936-visit-to-twin-cities",
-    "date": "1936",
-    "type": "Research Article",
-    "description": "Coverage of a donation that sheds light on Amelia Earhart's 1936 visit to the Twin Cities, featuring archival materials and community recollections.",
-    "tags": ["amelia earhart", "earhart", "1936", "twin cities", "donation", "aviation history", "archive", "local history"],
-    "keywords": "Amelia Earhart 1936 Twin Cities donation archival materials aviation history"
-}
+    "title": "Donated letter window into family tragedy",
+    "url": "https://mchistory.org/research/articles/donated-letter-window-into-family-tragedy",
+    "date": "Unknown",
+    "type": "Article",
+    "description": "Death came for John W. Puett on the afternoon of Jan. 12, 1917. The Bloomington grain dealer was at his Twin Grove elevator, located some five miles west of the city along the parallel rail lines of t...",
+    "tags": [
+      "donated",
+      "letter",
+      "window",
+      "into",
+      "family",
+      "tragedy",
+      "death",
+      "came"
+    ],
+    "keywords": "donated letter window into family tragedy death came"
+  },
+  {
+    "id": 5,
+    "title": "Donated Vrooman letter speaks to wartime loss",
+    "url": "https://mchistory.org/research/articles/donated-vrooman-letter-speaks-to-wartime-loss",
+    "date": "Unknown",
+    "type": "Article",
+    "description": "Faced with the enormity of the Second World War, it’s often difficult to put a human face on the horror. “One death is a tragedy, a million deaths a statistic,” is a chilling observation attributed to...",
+    "tags": [
+      "donated",
+      "vrooman",
+      "letter",
+      "speaks",
+      "wartime",
+      "loss",
+      "faced",
+      "enormity"
+    ],
+    "keywords": "donated vrooman letter speaks wartime loss faced enormity"
+  },
+  {
+    "id": 6,
+    "title": "Bloomington’s oldest park turns 165 this week",
+    "url": "https://mchistory.org/research/articles/bloomington-oldest-park-turns-165-this-week",
+    "date": "Unknown",
+    "type": "Article",
+    "description": "“How pleasant it is, immediately after the noontide hour of a hot summer’s day,” mused The Pantagraph in 1857, “to stroll away from the dusty streets of a noisy city, and spend an hour or two in saunt...",
+    "tags": [
+      "bloomington",
+      "oldest",
+      "park",
+      "turns",
+      "week",
+      "pleasant",
+      "immediately",
+      "after"
+    ],
+    "keywords": "bloomington oldest park turns week pleasant immediately after"
+  },
+  {
+    "id": 7,
+    "title": "For pioneers, river crossings sometimes matter of life and death",
+    "url": "https://mchistory.org/research/articles/for-pioneers-river-crossings-sometimes-matter-of-life-and-death",
+    "date": "Unknown",
+    "type": "Article",
+    "description": "Of all the hardships faced by pioneers, the danger of crossing swollen rivers and creeks is one of the more difficult for present-day folk to fully appreciate. Today, paved highways and byways on rais...",
+    "tags": [
+      "pioneers",
+      "river",
+      "crossings",
+      "sometimes",
+      "matter",
+      "life",
+      "death",
+      "hardships"
+    ],
+    "keywords": "pioneers river crossings sometimes matter life death hardships"
+  },
+  {
+    "id": 8,
+    "title": "Picture postcard speaks to power of donations",
+    "url": "https://mchistory.org/research/articles/picture-postcard-speaks-to-power-of-donations",
+    "date": "Unknown",
+    "type": "Article",
+    "description": "As a not-for-profit institution, the McLean County Museum of History relies to a considerable extent on the generosity of the public to collect, preserve, exhibit, and make available the heritage of t...",
+    "tags": [
+      "picture",
+      "postcard",
+      "speaks",
+      "power",
+      "donations",
+      "not-for-profit",
+      "institution",
+      "mclean"
+    ],
+    "keywords": "picture postcard speaks power donations not-for-profit institution mclean"
+  },
+  {
+    "id": 9,
+    "title": "Community Christmas ‘sing’ once annual event",
+    "url": "https://mchistory.org/research/articles/community-christmas-sing-once-annual-event",
+    "date": "Unknown",
+    "type": "Article",
+    "description": "The COVID-19 pandemic has led to the cancellation of countless holiday gatherings, school pageants, office parties, concerts, dinner dates, travel plans, worship services and just about everything els...",
+    "tags": [
+      "community",
+      "christmas",
+      "sing",
+      "once",
+      "annual",
+      "event",
+      "covid-19",
+      "pandemic"
+    ],
+    "keywords": "community christmas sing once annual event covid-19 pandemic"
+  },
+  {
+    "id": 10,
+    "title": "Bloomers photo features bevy of big leaguers",
+    "url": "https://mchistory.org/research/articles/bloomers-photo-features-bevy-of-big-leaguers",
+    "date": "Unknown",
+    "type": "Article",
+    "description": "A single photograph can open a door into a lost world. This Bloomington Bloomers team photo, for instance, taken at Fans Field during the 1920 season, tells us a lot about the National Pastime in the ...",
+    "tags": [
+      "bloomers",
+      "photo",
+      "features",
+      "bevy",
+      "leaguers",
+      "single",
+      "photograph",
+      "open"
+    ],
+    "keywords": "bloomers photo features bevy leaguers single photograph open"
+  }
 ]
