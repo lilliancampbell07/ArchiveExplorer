@@ -9,23 +9,20 @@ You now have a **real RAG (Retrieval-Augmented Generation) system** using the sa
 ## 🎯 What Changed
 
 ### AI Model
-- **Model**: Xenova/all-MiniLM-L6-v2 (same as your RAG.py!)
+- **Model**: Xenova/all-MiniLM-L6-v2
 - **Type**: Sentence transformer for semantic embeddings
-- **Size**: ~23MB
-- **Dimensions**: 384-dimensional vectors
 - **Location**: Runs entirely in browser via transformers.js
 
 ### Search Algorithm
-**Before**: Keyword matching only
 **Now**: AI-powered semantic search + keyword hybrid
 
 ### How It Works
 ```
 User Query: "When was Illinois State University founded?"
     ↓
-Generate 384-dim embedding vector (AI model)
+Generate embedding vector (AI model)
     ↓
-Compare with all article embeddings (cosine similarity)
+Compare with all article embeddings
     ↓
 Rank by semantic meaning (not just keywords!)
     ↓
