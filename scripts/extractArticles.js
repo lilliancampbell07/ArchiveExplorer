@@ -27,7 +27,7 @@ const __dirname = path.dirname(__filename);
 const CRAWLER_OUTPUT = path.join(__dirname, 'crawler_with_found_links_new_.json');
 const OUTPUT_FILE = path.join(__dirname, '../src/data/articles.json');
 const DELAY_BETWEEN_REQUESTS = 2000; // 2 seconds - be respectful!
-const MAX_ARTICLES = 100; // Limit to first 100 articles (adjust as needed)
+const MAX_ARTICLES = 155; // Limit to all 155 articles (adjust as needed to be less)
 
 /**
  * Extract article data from a page
@@ -71,17 +71,19 @@ async function extractArticleData(page, url, id) {
       return { title, date: dateElement, content: contentElement, type };
     });
     
-    // Generate description (first 200 chars of content)
-    const description = data.content
+    // Clean up the full content text
+    const fullContent = data.content
       .replace(/\s+/g, ' ')
-      .trim()
-      .substring(0, 200) + '...';
+      .trim();
     
-    // Generate tags from title and content
-    const tags = generateTags(data.title + ' ' + description);
+    // Generate description (first 200 chars of content)
+    const description = fullContent.substring(0, 200) + '...';
+    
+    // Generate tags from title and full content
+    const tags = generateTags(data.title + ' ' + fullContent);
     
     // Generate keywords
-    const keywords = generateKeywords(data.title + ' ' + description);
+    const keywords = generateKeywords(data.title + ' ' + fullContent);
     
     return {
       id,
@@ -90,6 +92,7 @@ async function extractArticleData(page, url, id) {
       date: data.date.trim() || 'Unknown',
       type: data.type.trim() || 'Article',
       description: description,
+      content: fullContent, // Include full article text
       tags,
       keywords
     };
