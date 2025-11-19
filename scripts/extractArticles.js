@@ -27,7 +27,7 @@ const __dirname = path.dirname(__filename);
 const CRAWLER_OUTPUT = path.join(__dirname, 'crawler_with_found_links_new_.json');
 const OUTPUT_FILE = path.join(__dirname, '../src/data/articles.json');
 const DELAY_BETWEEN_REQUESTS = 2000; // 2 seconds - be respectful!
-const MAX_ARTICLES = 50; // Limit to first 50 articles (adjust as needed)
+const MAX_ARTICLES = 100; // Limit to first 100 articles (adjust as needed)
 
 /**
  * Extract article data from a page

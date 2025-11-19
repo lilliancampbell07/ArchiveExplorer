@@ -27,11 +27,14 @@ class SimpleCrawler:
             self.visited.add(url)
             links = self.fetch_links(url)
             for link in links:
-                if urlparse(link).netloc == self.base_host and link.startswith(url):
-                    self.crawler_links[url].append(link)
-                    print(f"  Found relevant link: {link}")
-                    if link not in self.visited:
-                        self.to_visit.put(link)
+                # Check if link is from same host and within the articles section
+                if urlparse(link).netloc == self.base_host:
+                    # Include article pages and pagination
+                    if link.startswith(self.root_url):
+                        self.crawler_links[url].append(link)
+                        print(f"  Found relevant link: {link}")
+                        if link not in self.visited:
+                            self.to_visit.put(link)
 
     def fetch_links(self, url):
         try:
