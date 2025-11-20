@@ -11,6 +11,7 @@ interface Summary {
   summary: string;
   url?: string;
   createdAt?: string;
+  rating?: number;
 }
 
 const Summaries = () => {
@@ -33,6 +34,24 @@ const Summaries = () => {
     const updated = aiSummaries.filter(s => s.title !== title);
     setAiSummaries(updated);
     localStorage.setItem('aiSummaries', JSON.stringify(updated));
+  };
+
+  const handleRatingChange = (title: string, rating: number) => {
+    const updated = aiSummaries.map(s => 
+      s.title === title ? { ...s, rating } : s
+    );
+    setAiSummaries(updated);
+    localStorage.setItem('aiSummaries', JSON.stringify(updated));
+    
+    // Store feedback for RLHF analysis
+    const feedback = {
+      title,
+      rating,
+      timestamp: new Date().toISOString(),
+    };
+    
+    const existingFeedback = JSON.parse(localStorage.getItem('rlhfFeedback') || '[]');
+    localStorage.setItem('rlhfFeedback', JSON.stringify([...existingFeedback, feedback]));
   };
 
   return (
@@ -69,7 +88,11 @@ const Summaries = () => {
               <div className="space-y-6">
                 {aiSummaries.map((summary, index) => (
                   <div key={index} className="relative group">
-                    <SummaryCard {...summary} />
+                    <SummaryCard 
+                      {...summary}
+                      onRatingChange={handleRatingChange}
+                      initialRating={summary.rating || 0}
+                    />
                     <Button
                       variant="ghost"
                       size="sm"
