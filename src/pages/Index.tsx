@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
-import SearchBar from "@/components/SearchBar";
+import SearchBar from "@/components/features/components/SearchBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, Search, Sparkles, Mail } from "lucide-react";
