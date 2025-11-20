@@ -83,6 +83,16 @@ const Search = () => {
     setCurrentlySummarizing(articleTitle);
     
     try {
+      // Ensure summarization model is loaded
+      if (!summarizationReady) {
+        toast({
+          title: "⏳ Loading AI Model",
+          description: "Loading summarization model for the first time...",
+        });
+        await preloadSummarizationModel();
+        setSummarizationReady(true);
+      }
+      
       // Find the full article content
       const article = articlesData.find(a => a.title === articleTitle);
       const content = (article as any)?.content || articleDescription;
@@ -182,7 +192,7 @@ const Search = () => {
                 <DocumentCard 
                   key={index} 
                   {...result}
-                  canSummarize={summarizationReady}
+                  canSummarize={true}
                   onSummarize={handleSummarize}
                   isSummarizing={currentlySummarizing === result.title}
                 />
