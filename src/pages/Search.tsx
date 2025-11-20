@@ -5,21 +5,28 @@ import DocumentCard from "@/components/DocumentCard";
 import ExternalLink from "@/components/ExternalLink";
 import { useToast } from "@/hooks/use-toast";
 import { searchArticlesHybrid, formatSearchResults, preloadAIModel, isAILoading } from "@/lib/aiSearchUtils";
+import { preloadSummarizationModel, generateArticleSummary, isSummarizationReady } from "@/lib/summarizationService";
 import articlesData from "@/data/articles.json";
 import { Loader2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState(
     formatSearchResults(articlesData.map(article => ({ ...article, relevanceScore: 0 })))
   );
   const [isSearching, setIsSearching] = useState(false);
   const [aiModelLoading, setAiModelLoading] = useState(true);
+  const [summarizationReady, setSummarizationReady] = useState(false);
+  const [currentlySummarizing, setCurrentlySummarizing] = useState<string | null>(null);
 
-  // Pre-load AI model on component mount
+  // Pre-load AI models on component mount
   useEffect(() => {
-    const loadModel = async () => {
+    const loadModels = async () => {
       setAiModelLoading(true);
+      
+      // Load search model first (priority)
       await preloadAIModel();
       setAiModelLoading(false);
       
@@ -27,9 +34,21 @@ const Search = () => {
         title: "🤖 AI Model Ready",
         description: "Semantic search powered by all-MiniLM-L6-v2 is now active!",
       });
+      
+      // Load summarization model in background
+      try {
+        await preloadSummarizationModel();
+        setSummarizationReady(true);
+        toast({
+          title: "✨ Summarization Ready",
+          description: "AI summarization is now available for all articles!",
+        });
+      } catch (error) {
+        console.error('Failed to load summarization model:', error);
+      }
     };
     
-    loadModel();
+    loadModels();
   }, [toast]);
 
   const handleSearch = async (query: string) => {
@@ -57,6 +76,60 @@ const Search = () => {
       });
     } finally {
       setIsSearching(false);
+    }
+  };
+
+  const handleSummarize = async (articleTitle: string, articleDescription: string) => {
+    setCurrentlySummarizing(articleTitle);
+    
+    try {
+      // Find the full article content
+      const article = articlesData.find(a => a.title === articleTitle);
+      const content = (article as any)?.content || articleDescription;
+      
+      toast({
+        title: "🤖 Generating Summary",
+        description: "AI is analyzing the article...",
+      });
+      
+      // Generate AI summary
+      const aiSummary = await generateArticleSummary(content, 150);
+      
+      // Store summary in localStorage to pass to Summaries page
+      const existingSummaries = JSON.parse(localStorage.getItem('aiSummaries') || '[]');
+      const newSummary = {
+        title: articleTitle,
+        originalDate: article?.date || 'Unknown',
+        category: article?.type || 'Article',
+        summary: aiSummary,
+        createdAt: new Date().toISOString(),
+      };
+      
+      // Add to beginning of array (most recent first)
+      const updatedSummaries = [newSummary, ...existingSummaries.filter((s: any) => s.title !== articleTitle)];
+      localStorage.setItem('aiSummaries', JSON.stringify(updatedSummaries));
+      
+      toast({
+        title: "✅ Summary Generated",
+        description: "View it in the Summaries page!",
+        action: (
+          <button 
+            onClick={() => navigate('/summaries')}
+            className="text-sm underline"
+          >
+            View Now
+          </button>
+        ),
+      });
+    } catch (error) {
+      console.error('Summarization error:', error);
+      toast({
+        title: "Summarization error",
+        description: "Failed to generate summary. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setCurrentlySummarizing(null);
     }
   };
 
@@ -105,7 +178,13 @@ const Search = () => {
             
             <div className="space-y-4">
               {searchResults.map((result, index) => (
-                <DocumentCard key={index} {...result} />
+                <DocumentCard 
+                  key={index} 
+                  {...result}
+                  canSummarize={summarizationReady}
+                  onSummarize={handleSummarize}
+                  isSummarizing={currentlySummarizing === result.title}
+                />
               ))}
             </div>
           </div>

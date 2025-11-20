@@ -1,8 +1,21 @@
+import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import SummaryCard from "@/components/SummaryCard";
+import { Button } from "@/components/ui/button";
+import { Trash2, Sparkles } from "lucide-react";
+
+interface Summary {
+  title: string;
+  originalDate: string;
+  category: string;
+  summary: string;
+  createdAt?: string;
+}
 
 const Summaries = () => {
-  const summaries = [
+  const [aiSummaries, setAiSummaries] = useState<Summary[]>([]);
+  
+  const exampleSummaries: Summary[] = [
     {
       title: "Abraham Lincoln's Time in Bloomington",
       originalDate: "1854-1860",
@@ -29,6 +42,25 @@ const Summaries = () => {
     }
   ];
 
+  useEffect(() => {
+    // Load AI-generated summaries from localStorage
+    const stored = localStorage.getItem('aiSummaries');
+    if (stored) {
+      setAiSummaries(JSON.parse(stored));
+    }
+  }, []);
+
+  const clearAISummaries = () => {
+    localStorage.removeItem('aiSummaries');
+    setAiSummaries([]);
+  };
+
+  const deleteSummary = (title: string) => {
+    const updated = aiSummaries.filter(s => s.title !== title);
+    setAiSummaries(updated);
+    localStorage.setItem('aiSummaries', JSON.stringify(updated));
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -42,10 +74,57 @@ const Summaries = () => {
             </p>
           </div>
 
-          <div className="space-y-6">
-            {summaries.map((summary, index) => (
-              <SummaryCard key={index} {...summary} />
-            ))}
+          {aiSummaries.length > 0 && (
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-semibold text-foreground flex items-center gap-2">
+                  <Sparkles className="h-5 w-5 text-yellow-500" />
+                  AI-Generated Summaries
+                </h2>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={clearAISummaries}
+                  className="gap-2 text-muted-foreground hover:text-destructive"
+                >
+                  <Trash2 className="h-4 w-4" />
+                  Clear All
+                </Button>
+              </div>
+              
+              <div className="space-y-6">
+                {aiSummaries.map((summary, index) => (
+                  <div key={index} className="relative group">
+                    <SummaryCard {...summary} />
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => deleteSummary(summary.title)}
+                      className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="space-y-4">
+            <h2 className="text-2xl font-semibold text-foreground">
+              {aiSummaries.length > 0 ? 'Example Summaries' : 'Summaries'}
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              {aiSummaries.length > 0 
+                ? 'These are example summaries. Use the Search page to generate AI summaries of real articles!' 
+                : 'Use the Search page and click "Summarize" on any article to generate AI summaries!'}
+            </p>
+            
+            <div className="space-y-6">
+              {exampleSummaries.map((summary, index) => (
+                <SummaryCard key={index} {...summary} />
+              ))}
+            </div>
           </div>
         </div>
       </main>
