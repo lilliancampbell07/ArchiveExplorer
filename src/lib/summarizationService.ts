@@ -1,7 +1,7 @@
 /**
  * AI Summarization Service
  * Uses transformers.js to generate article summaries
- * Model: Falconsai/text_summarization (optimized for summarization)
+ * Model: Xenova/distilbart-cnn-6-6 (optimized for summarization)
  */
 
 import { pipeline, env } from '@xenova/transformers';
@@ -36,7 +36,7 @@ class SummarizationService {
         // Use a lightweight summarization model
         this.summarizer = await pipeline(
           'summarization',
-          'Falconsai/text_summarization',
+          'Xenova/distilbart-cnn-6-6',
           { progress_callback: onProgress }
         );
         
