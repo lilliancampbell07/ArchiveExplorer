@@ -8,9 +8,10 @@ interface SummaryCardProps {
   originalDate: string;
   category: string;
   summary: string;
+  url?: string;
 }
 
-const SummaryCard = ({ title, originalDate, category, summary }: SummaryCardProps) => {
+const SummaryCard = ({ title, originalDate, category, summary, url }: SummaryCardProps) => {
   return (
     <Card className="transition-all hover:shadow-md">
       <CardHeader>
@@ -27,10 +28,16 @@ const SummaryCard = ({ title, originalDate, category, summary }: SummaryCardProp
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-foreground leading-relaxed">{summary}</p>
-        <Button variant="outline" className="gap-2">
-          View Original Document
-          <ExternalLink className="h-4 w-4" />
-        </Button>
+        {url && (
+          <Button 
+            variant="outline" 
+            className="gap-2"
+            onClick={() => window.open(url, '_blank')}
+          >
+            View Original Document
+            <ExternalLink className="h-4 w-4" />
+          </Button>
+        )}
       </CardContent>
     </Card>
   );

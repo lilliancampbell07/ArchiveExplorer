@@ -102,6 +102,7 @@ const Search = () => {
         originalDate: article?.date || 'Unknown',
         category: article?.type || 'Article',
         summary: aiSummary,
+        url: article?.url,
         createdAt: new Date().toISOString(),
       };
       
