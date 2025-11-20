@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
-import SearchBar from "@/components/features/components/SearchBar";
-import DocumentCard from "@/features/DocumentCard";
+import SearchBar from "@/components/SearchBar";
+import DocumentCard from "@/components/DocumentCard";
 import ExternalLink from "@/components/ExternalLink";
 import { useToast } from "@/hooks/use-toast";
-import { searchArticlesHybrid, formatSearchResults, preloadAIModel, isAILoading } from "@/features/search feature/aiSearchUtils";
+import { searchArticlesHybrid, formatSearchResults, preloadAIModel, isAILoading } from "@/lib/aiSearchUtils";
 import { preloadSummarizationModel, generateArticleSummary, isSummarizationReady } from "@/lib/summarizationService";
 import articlesData from "@/data/articles.json";
 import { Loader2 } from "lucide-react";
