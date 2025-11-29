@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Navigation from "@/components/Navigation";
-import SearchBar from "@/components/SearchBar";
-import DocumentCard from "@/components/DocumentCard";
-import ExternalLink from "@/components/ExternalLink";
+import Navigation from "@/components/ui/Navigation";
+import SearchBar from "@/components/ui/SearchBar";
+import DocumentCard from "@/components/ui/DocumentCard";
+import ExternalLink from "@/components/ui/ExternalLink";
 import { useToast } from "@/hooks/use-toast";
 import { searchArticlesHybrid, formatSearchResults, preloadAIModel, isAILoading } from "@/lib/aiSearchUtils";
 import { preloadSummarizationModel, generateArticleSummary, isSummarizationReady } from "@/lib/summarizationService";

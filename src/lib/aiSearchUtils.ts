@@ -19,7 +19,7 @@ interface SearchResult extends Article {
 
 /**
  * AI-Powered Semantic Search using embeddings
- * Uses the same model as your RAG.py: all-MiniLM-L6-v2
+ * Model: all-MiniLM-L6-v2
  */
 export async function searchArticlesAI(
   query: string,

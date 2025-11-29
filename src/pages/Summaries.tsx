@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Navigation from "@/components/Navigation";
-import SummaryCard from "@/components/SummaryCard";
+import Navigation from "@/components/ui/Navigation";
+import SummaryCard from "@/components/ui/SummaryCard";
 import { Button } from "@/components/ui/button";
 import { Trash2, Sparkles } from "lucide-react";
 

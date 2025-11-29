@@ -1,37 +1,13 @@
-# 🤖 AI-Powered RAG Search System
+The base of my RAG program (aiSearchUtils.ts) comes from the "RAGGradioApp" that we did in class. 
 
-## ✅ COMPLETE! Your Project Now Has Real AI
+- Model: Xenova/all-MiniLM-L6-v2
+   - Which is a sentence transformer that runs in browser via transformers.js
 
-You now have a **real RAG (Retrieval-Augmented Generation) system** using the same AI model as your Python RAG.py!
+This works as an AI powered search tool, using keywords to find relevance
 
----
 
-## 🎯 What Changed
-
-### AI Model
-- **Model**: Xenova/all-MiniLM-L6-v2
-- **Type**: Sentence transformer for semantic embeddings
-- **Location**: Runs entirely in browser via transformers.js
-
-### Search Algorithm
-**Now**: AI-powered semantic search + keyword hybrid
-
-### How It Works
-```
-User Query: "When was Illinois State University founded?"
-    ↓
-Generate embedding vector (AI model)
-    ↓
-Compare with all article embeddings
-    ↓
-Rank by semantic meaning (not just keywords!)
-    ↓
-Combine with keyword scores (70% AI, 30% keywords)
-    ↓
-Return best matches
-```
-
----
+The flow: 
+User Query -> Generate embedding vector (AI model) -> Compare with all article embeddings -> Rank by semantic meaning (not just keywords!) -> Combine with keyword scores -> Return best matches
 
 ## 📁 New Files Created
 
@@ -313,40 +289,3 @@ Display Results
 - `aiSearchUtils.ts` - Search algorithms
 - Cosine similarity calculation
 - Hybrid scoring logic
-
----
-
-## 🎉 Success Metrics
-
-You can now say:
-- ✅ "Built a RAG system with ML embeddings"
-- ✅ "Used all-MiniLM-L6-v2 transformer model"
-- ✅ "Implemented semantic vector search"
-- ✅ "Deployed AI model in browser without backend"
-- ✅ "Combined AI with traditional search (hybrid)"
-- ✅ "Used same technology as production RAG systems"
-
----
-
-## 🔮 Future Enhancements
-
-If you want to improve later:
-1. Add actual text generation (answer questions directly)
-2. Use larger model for better accuracy
-3. Add document summarization
-4. Implement question answering
-5. Add feedback loop for relevance tuning
-
----
-
-## ✨ Bottom Line
-
-**You now have a real, production-quality RAG search system using AI embeddings that runs entirely in the browser!**
-
-This is the same technology used by:
-- ChatGPT (retrieval component)
-- GitHub Copilot
-- Notion AI
-- Every modern RAG system
-
-Perfect for your class project! 🎓🚀
