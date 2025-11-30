@@ -49,20 +49,22 @@ Archive Explorer makes it easier to explore the over 150 historical articles fro
 
 ## Installation & Setup
 
+**NOTE**: This project is also available on Lovable:, where you can bypass the need for a local setup: https://archiveexplorer.lovable.app
+
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/lilliancampbell07/chronicle-clues.git
-   cd chronicle-clues
+   git clone https://github.com/lilliancampbell07/ArchiveExplorer.git
+   cd ArchiveExplorer
    ```
 
 2. **Install dependencies**
    ```bash
-   npm install
+   bun install
    ```
 
 3. **Run the development server**
    ```bash
-   npm run dev
+   bun run dev
    ```
 
 4. **Open in browser**
@@ -70,7 +72,7 @@ Archive Explorer makes it easier to explore the over 150 historical articles fro
 
 ## How to Use
 
-1. **Search**: Type any query in the search bar (e.g., "Lincoln courthouse" or "historic buildings")
+1. **Search**: Type any query in the search bar
 2. **Browse Results**: Articles are ranked by relevance to your search
 3. **Summarize**: Click the "Summarize" button on any article card to generate a quick summary
 4. **Read Full Article**: Click "Read Full Article" to view the complete content on the museum website
@@ -93,22 +95,6 @@ If you want to update the article database:
    ```bash
    python "article extraction/extractArticles.py"
    ```
-
-## Project Structure
-
-```
-chronicle-clues/
-├── src/
-│   ├── components/        # UI components
-│   ├── data/             # articles.json database
-│   ├── lib/              # Core functionality
-│   │   ├── aiSearchUtils.ts        # AI search logic
-│   │   ├── embeddingService.ts     # AI model management
-│   │   └── summarizationService.ts # Summarization
-│   └── pages/            # React pages
-├── scripts/              # Data collection scripts
-└── documentation/        # Project documentation
-```
 
 ## Credits
 
