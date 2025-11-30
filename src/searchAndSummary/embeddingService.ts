@@ -1,4 +1,7 @@
-import { pipeline } from '@xenova/transformers';
+import { pipeline, env } from '@xenova/transformers';
+
+// Configure to use cached models from CDN
+env.allowLocalModels = false;
 
 /**
  * Embedding Service using transformers.js

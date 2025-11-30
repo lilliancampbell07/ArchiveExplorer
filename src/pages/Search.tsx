@@ -27,13 +27,24 @@ const Search = () => {
       setAiModelLoading(true);
       
       // Load search model first (priority)
-      await preloadAIModel();
-      setAiModelLoading(false);
-      
-      toast({
-        title: "🤖 AI Model Ready",
-        description: "Semantic search powered by all-MiniLM-L6-v2 is now active!",
-      });
+      try {
+        await preloadAIModel();
+        setAiModelLoading(false);
+        
+        toast({
+          title: "🤖 AI Model Ready",
+          description: "Semantic search powered by all-MiniLM-L6-v2 is now active!",
+        });
+      } catch (error) {
+        console.error('Failed to load AI model:', error);
+        setAiModelLoading(false);
+        toast({
+          title: "⚠️ AI Model Loading Failed",
+          description: "There was an error loading the AI model. Please refresh the page.",
+          variant: "destructive",
+        });
+        return;
+      }
       
       // Load summarization model in background
       try {
@@ -45,6 +56,10 @@ const Search = () => {
         });
       } catch (error) {
         console.error('Failed to load summarization model:', error);
+        toast({
+          title: "⚠️ Summarization Unavailable",
+          description: "Summarization model couldn't load, but search still works!",
+        });
       }
     };
     
