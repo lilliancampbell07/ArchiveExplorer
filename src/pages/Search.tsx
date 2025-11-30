@@ -4,7 +4,7 @@ import SearchBar from "@/components/ui/SearchBar";
 import DocumentCard from "@/components/ui/DocumentCard";
 import ExternalLink from "@/components/ui/ExternalLink";
 import { useToast } from "@/hooks/use-toast";
-import { searchArticlesHybrid, formatSearchResults, preloadAIModel, isAILoading } from "@/lib/aiSearchUtils";
+import { searchArticlesAI, formatSearchResults, preloadAIModel, isAILoading } from "@/lib/aiSearchLogic";
 import { preloadSummarizationModel, generateArticleSummary, isSummarizationReady } from "@/lib/summarizationService";
 import articlesData from "@/data/articles.json";
 import { Loader2 } from "lucide-react";
@@ -56,7 +56,7 @@ const Search = () => {
     
     try {
       // Perform AI-powered hybrid search
-      const results = await searchArticlesHybrid(query, articlesData);
+      const results = await searchArticlesAI(query, articlesData);
       const formattedResults = formatSearchResults(results);
       
       setSearchResults(formattedResults);

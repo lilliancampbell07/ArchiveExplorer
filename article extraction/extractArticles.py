@@ -33,17 +33,13 @@ import time
 import os
 from pathlib import Path
 
-# ============================================================================
-# Configuration Constants
-# ============================================================================
-
 SCRIPT_DIR = Path(__file__).parent
 CRAWLER_OUTPUT = SCRIPT_DIR / 'crawler_with_found_links_new_.json'
 OUTPUT_FILE = SCRIPT_DIR.parent / 'src' / 'data' / 'articles.json'
 DELAY_BETWEEN_REQUESTS = 2
 MAX_ARTICLES = 155 #MCHM POTP has approx 155 articles, but can limit # for testing
 
-# User agent to identify our bot - some sites block requests without it, better safe than sorry! 
+# User agent to identify the bot - some sites block requests without it, better safe than sorry! 
 USER_AGENT = 'Mozilla/5.0 (Educational Research Bot) - MCHM Article Archiver'
 
 def extract_article_data(url, article_id):

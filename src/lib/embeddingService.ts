@@ -117,6 +117,13 @@ class EmbeddingService {
 export const embeddingService = EmbeddingService.getInstance();
 
 /**
+ * Convenience function to get embedding
+ */
+export async function getEmbedding(text: string): Promise<number[]> {
+  return embeddingService.embed(text);
+}
+
+/**
  * Calculate cosine similarity between two vectors
  * Returns value between 0 (dissimilar) and 1 (identical)
  */
