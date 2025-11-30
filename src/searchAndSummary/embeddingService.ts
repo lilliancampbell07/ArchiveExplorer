@@ -1,4 +1,4 @@
-import { pipeline, Pipeline } from '@xenova/transformers';
+import { pipeline } from '@xenova/transformers';
 
 /**
  * Embedding Service using transformers.js
@@ -8,7 +8,7 @@ import { pipeline, Pipeline } from '@xenova/transformers';
 
 class EmbeddingService {
   private static instance: EmbeddingService;
-  private embedder: Pipeline | null = null;
+  private embedder: any = null;
   private isLoading: boolean = false;
   private loadPromise: Promise<void> | null = null;
 
