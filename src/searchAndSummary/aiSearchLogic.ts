@@ -21,7 +21,7 @@
  *   5. Return results sorted by relevance
  */
 
-import { getEmbedding, cosineSimilarity } from './embeddingService';
+import { getEmbedding, cosineSimilarity, embeddingService } from './embeddingService';
 
 //Structure from articles.json
 interface Article {
@@ -205,7 +205,6 @@ export function searchArticlesKeyword(
  *   - Display "AI search ready" message to user if model loads
  */
 export function isAIReady(): boolean {
-  const { embeddingService } = require('./embeddingService');
   return embeddingService.isReady();
 }
 
@@ -222,7 +221,6 @@ export function isAIReady(): boolean {
  *   - Prevent multiple load attempts
  */
 export function isAILoading(): boolean {
-  const { embeddingService } = require('./embeddingService');
   return embeddingService.isModelLoading();
 }
 
@@ -242,7 +240,6 @@ export function isAILoading(): boolean {
  *   - We used this model in class 
  */
 export async function preloadAIModel(): Promise<void> {
-  const { embeddingService } = require('./embeddingService');
   await embeddingService.initialize();
 }
 
