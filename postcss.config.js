@@ -1,2 +1,6 @@
-// This file re-exports the actual config from the config folder
-export { default } from './config/postcss.config.js';
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
