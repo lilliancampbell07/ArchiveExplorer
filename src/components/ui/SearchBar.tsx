@@ -48,3 +48,4 @@ const SearchBar = ({ onSearch, placeholder = "Ask a question about the archives.
 };
 
 export default SearchBar;
+
