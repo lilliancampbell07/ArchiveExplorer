@@ -5,7 +5,6 @@
  *   Provides multiple search strategies for finding articles
  *   - AI semantic search: Understands meaning and context
  *   - Keyword search: Fast, traditional text matching
- *   - Hybrid search: Combines both approaches
  * 
  * Tech Used:
  *   - transformers.js: Browser-based AI 

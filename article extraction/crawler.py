@@ -1,8 +1,8 @@
 """
 What this file does:
-Web Crawler: specifically for mchistory.org/articles
+Web Crawler: specifically for mchistory.org/articles/research
 
-This crawler visits & extracts links from mchistory.org/articles.
+This crawler visits & extracts links from mchistory.org/articles/research.
 
 Dependencies:
     - urllib

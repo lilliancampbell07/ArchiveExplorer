@@ -5,7 +5,7 @@ env.allowLocalModels = false;
 
 /**
  * Embedding Service using transformers.js
- * Model: Xenova/all-MiniLM-L6-v2 (same as your RAG.py)
+ * Model: Xenova/all-MiniLM-L6-v2 (same as RAG.py)
  * Runs entirely in the browser - no backend needed!
  */
 
@@ -40,7 +40,7 @@ class EmbeddingService {
         console.log('🤖 Loading AI embedding model (Xenova/all-MiniLM-L6-v2)...');
         console.log('⏳ This takes ~5-10 seconds on first load...');
         
-        // Load the same model as your RAG.py: all-MiniLM-L6-v2
+        // Load the same model as RAG.py: all-MiniLM-L6-v2
         this.embedder = await pipeline(
           'feature-extraction',
           'Xenova/all-MiniLM-L6-v2'
