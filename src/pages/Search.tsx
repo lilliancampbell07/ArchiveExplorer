@@ -70,7 +70,7 @@ const Search = () => {
     setIsSearching(true);
     
     try {
-      // Perform AI-powered hybrid search
+      // Perform AI-powered search
       const results = await searchArticlesAI(query, articlesData);
       const formattedResults = formatSearchResults(results);
       

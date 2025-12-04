@@ -2,27 +2,25 @@
 A searchable archive of historical articles from the McLean County Museum of History, powered by AI semantic search and AI summarization.
 
 ## Project Introduction
-"Archive Explorer" is a web-based tool for researching that was designed to help make the McLean County History Museum "Pages of the Past" articles more accessible using AI. This application helps researchers, students, and BloNo history buffs find artices relevant to what they're looking for, and create short summaries of lengthy articles. The summaries are very helpful to gain insight on exactly what is covered in an article before diving into it. Archive Explorer implements a search feature that processes natural language, rather than keyword matching, which makes sure that the searcher recieves all the information they want, even if they're calling it by a different name. The search system uses transformer-based neural networks to do this. These run entirely client-side, so there's no backend server or APIs required. This was done to make it free and fast. 
+"Archive Explorer" is a web-based tool for researching that was designed to help make the McLean County History Museum "Pages of the Past" articles more accessible using AI. This application helps researchers, students, and BloNo history buffs find articles relevant to what they're looking for, and create short summaries of lengthy articles. Archive Explorer implements a search feature that processes natural language, rather than keyword matching, which makes sure that the searcher recieves all the information they want, even if they're calling it by a different name or using abbreviations. To do this, the search system uses transformer-based neural networks. Because they're transoformer based, they run entirely client-side, so there's no backend server or APIs required. This was done to make sure it would stay compatible with Lovable's free tier. 
 
-## Features
-- **AI Semantic Search**: Understands WHAT you're searching, not just exact word matches
+## Features Described Above
+- **AI Semantic Search**: Understands WHAT you're searching, not just exact word matches 
 - **AI Summarization**: Get quick summaries of long articles
 - **Fast & Free**: Runs entirely in your browser, no backend needed
-
-##APIs, Models, Accounts, & Platforms
 
 ### Platform
 - **[Lovable](https://archiveexplorer.lovable.app/)** - This site runs entirely on Lovable. 
 - **No API keys required** - All AI models run locally in the browser
 
 ### AI Models Used 
-- **Xenova/all-MiniLM-L6-v2** - This is a sentence embedding model for the semantic search feature -- It was used in class during the RAG example. 
+- **Xenova/all-MiniLM-L6-v2** - This is a sentence embedding model for the semantic search feature 
   - Source: [Hugging Face](https://huggingface.co/Xenova/all-MiniLM-L6-v2)
-  - What it does: Converts text to vectors for similarity comparison
+  - What it does: Converts text to vectors for cosine similarity comparison
   - Note: It takes about 5-10 seconds to initially load, and then it is cached in the browser
-- **Xenova/distilbart-cnn-6-6** (~50MB) - Text summarization model
+- **Xenova/distilbart-cnn-6-6** - This is a text summarization model
   - Source: [Hugging Face](https://huggingface.co/Xenova/distilbart-cnn-6-6)
-  - What it does: Generates concise summaries of articles
+  - What it does: Generates concise summaries of the articles
   - Note: It takes about 10-20 seconds to initially load, and then it is cached in the browser
 
 ### Technologies & Frameworks
@@ -41,28 +39,29 @@ A searchable archive of historical articles from the McLean County Museum of His
 - **beautifulsoup4** - This is used for data extraction, and HTML parsing 
 
 ### External Data Sources
-- **McLean County History Museum** - Historical article content
-  - Note that there is no API used, article content was scraped after crawling through "mchistory.org/research/articles" 
-  - *All content belongs to McLean County Museum of History 
+- **The McLean County History Museum** - This is where all of the articles come from
+  - Note that there is no API used, article content was scraped after crawling the website
+  - *All content belongs to McLean County History Museum 
 
 ## The flow of this program: 
+**Done Once Before Running**
     -Data Collection: 
-      -crawler.py -> Crawls mchistory.org/articles for all URLS of articles 
+      -crawler.py -> Crawls mchistory.org/research/articles for article URLs 
       -extractArticles.py -> scrapes the article content from each URL found 
-      -articles.json -> OUTPUT, the database of 155 articles goes into this file 
+      -articles.json -> OUTPUT, the database of 155 total articles goes into this file 
 
-    -At runtime in the browser:
-      -embeddingService.ts -> Initializes, downloads, caches the AI model (all-MiniLM-L6-v2)
-    
+**At runtime in the browser:**
+    -embeddingService.ts -> Initializes, downloads, caches the AI models   
+   
     -When "Search" feature is being used: 
       -aiSearchLogic.ts -> Handles all of the search logic that is used 
         -Calls: 
           -embeddingService.ts -> to convert queries to vectors, and also to convert each article to a vector 
         -Uses: 
-          -cosineSimilarity() -> to compare vectors 
+          -cosineSimilarity() -> to compare those vectors 
         Returns: 
           -Returns SCORED/RANKED results after vector comparison 
-    
+
     -When "Summary" feature is being used: 
       -summarizationService.ts -> Generates a summary 
         -How it does this: 
