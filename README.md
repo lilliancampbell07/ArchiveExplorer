@@ -199,3 +199,6 @@ This is the section where I documented problems I encountered during development
 - The page would attempt to summarize an article before the distilbart model finished downloading
 - **How I fixed it**: Added `summarizationReady` check before allowing summarize button clicks
 - I also added a loading indicator if the model was not ready
+
+# Video Tutorial 
+[Youtube](https://youtu.be/qzH_JiAANAM)

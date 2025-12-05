@@ -43,7 +43,7 @@ const Summaries = () => {
     setAiSummaries(updated);
     localStorage.setItem('aiSummaries', JSON.stringify(updated));
     
-    // Store feedback for RLHF analysis
+    // Store feedback
     const feedback = {
       title,
       rating,
